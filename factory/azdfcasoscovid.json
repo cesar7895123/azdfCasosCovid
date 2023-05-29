@@ -1,0 +1,9 @@
+{
+	"name": "azdfcasoscovid",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "8ab60a06-3d72-4b8c-8305-8c954819fe6a",
+		"tenantId": "b829b5b9-e6d8-4b30-9714-6b0916ec8274"
+	}
+}
