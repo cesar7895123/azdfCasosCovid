@@ -44,7 +44,7 @@
 						"referenceName": "AzAdCasosCovid",
 						"type": "DatasetReference",
 						"parameters": {
-							"NombreArchivo": "CasosCovidColombia"
+							"NombreArchivo": "FullCasosCovidColombia.xlsx"
 						}
 					}
 				]

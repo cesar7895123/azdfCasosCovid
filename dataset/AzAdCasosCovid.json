@@ -18,7 +18,8 @@
 				"fileName": {
 					"value": "@dataset().NombreArchivo",
 					"type": "Expression"
-				}
+				},
+				"fileSystem": "data"
 			}
 		}
 	}
