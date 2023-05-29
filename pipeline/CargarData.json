@@ -1,0 +1,54 @@
+{
+	"name": "CargarData",
+	"properties": {
+		"activities": [
+			{
+				"name": "ConsultaRegistros",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"dataset": {
+						"referenceName": "ArchivoOrigen",
+						"type": "DatasetReference",
+						"parameters": {
+							"NombreArchivo": {
+								"value": "@pipeline().parameters.NombreArchivo",
+								"type": "Expression"
+							}
+						}
+					},
+					"firstRowOnly": true
+				}
+			}
+		],
+		"parameters": {
+			"NombreArchivo": {
+				"type": "string",
+				"defaultValue": "FullCasosCovidColombia"
+			}
+		},
+		"folder": {
+			"name": "CasosCovid"
+		},
+		"annotations": []
+	}
+}
