@@ -42,7 +42,10 @@
 				"outputs": [
 					{
 						"referenceName": "AzAdCasosCovid",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"NombreArchivo": "CasosCovidColombia"
+						}
 					}
 				]
 			}
