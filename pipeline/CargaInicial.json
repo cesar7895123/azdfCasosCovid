@@ -1,0 +1,9 @@
+{
+	"name": "CargaInicial",
+	"properties": {
+		"folder": {
+			"name": "CasosCovid"
+		},
+		"annotations": []
+	}
+}
