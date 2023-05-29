@@ -1,0 +1,32 @@
+{
+	"name": "AzAdCasosCovid",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzDLSCasosCovid",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"Directorio": {
+				"type": "string"
+			},
+			"NombreArchivo": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().NombreArchivo",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().Directorio",
+					"type": "Expression"
+				}
+			}
+		}
+	}
+}
