@@ -1,5 +1,5 @@
 {
-	"name": "AzAdCasosCovid",
+	"name": "dsDLCasosCovid",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzDLSCasosCovid",

@@ -41,7 +41,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "AzAdCasosCovid",
+						"referenceName": "dsDLCasosCovid",
 						"type": "DatasetReference",
 						"parameters": {
 							"NombreArchivo": "FullCasosCovidColombia"
