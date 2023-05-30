@@ -1,0 +1,56 @@
+{
+	"name": "dfOrigenCrud",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DSReadCSV",
+						"type": "DatasetReference"
+					},
+					"name": "OrigenProcesados"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "TransformarColumnas"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          {fecha reporte web} as string,",
+				"          {ID de caso} as string,",
+				"          {Fecha de notificación} as string,",
+				"          {Código DIVIPOLA departamento} as string,",
+				"          {Nombre departamento} as string,",
+				"          {Código DIVIPOLA municipio} as string,",
+				"          {Nombre municipio} as string,",
+				"          Edad as string,",
+				"          {Unidad de medida de edad} as string,",
+				"          Sexo as string,",
+				"          {Tipo de contagio} as string,",
+				"          {Ubicación del caso} as string,",
+				"          Estado as string,",
+				"          {Código ISO del país} as string,",
+				"          {Nombre del país} as string,",
+				"          Recuperado as string,",
+				"          {Fecha de inicio de síntomas} as string,",
+				"          {Fecha de muerte} as string,",
+				"          {Fecha de diagnóstico} as string,",
+				"          {Fecha de recuperación} as string,",
+				"          {Tipo de recuperación} as string,",
+				"          {Pertenencia étnica} as string,",
+				"          {Nombre del grupo étnico} as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> OrigenProcesados",
+				"OrigenProcesados derive({ID de caso} = toInteger(replace({ID de caso},',','')),",
+				"          {Código DIVIPOLA departamento} = toInteger(replace({Código DIVIPOLA departamento},',','')),",
+				"          {Código DIVIPOLA municipio} = toInteger(replace({Código DIVIPOLA municipio},',',''))) ~> TransformarColumnas"
+			]
+		}
+	}
+}

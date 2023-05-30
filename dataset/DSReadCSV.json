@@ -1,0 +1,116 @@
+{
+	"name": "DSReadCSV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzDLSCasosCovid",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "FullCasosCovidColombia",
+				"fileSystem": "data"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "fecha reporte web",
+				"type": "String"
+			},
+			{
+				"name": "ID de caso",
+				"type": "String"
+			},
+			{
+				"name": "Fecha de notificación",
+				"type": "String"
+			},
+			{
+				"name": "Código DIVIPOLA departamento",
+				"type": "String"
+			},
+			{
+				"name": "Nombre departamento",
+				"type": "String"
+			},
+			{
+				"name": "Código DIVIPOLA municipio",
+				"type": "String"
+			},
+			{
+				"name": "Nombre municipio",
+				"type": "String"
+			},
+			{
+				"name": "Edad",
+				"type": "String"
+			},
+			{
+				"name": "Unidad de medida de edad",
+				"type": "String"
+			},
+			{
+				"name": "Sexo",
+				"type": "String"
+			},
+			{
+				"name": "Tipo de contagio",
+				"type": "String"
+			},
+			{
+				"name": "Ubicación del caso",
+				"type": "String"
+			},
+			{
+				"name": "Estado",
+				"type": "String"
+			},
+			{
+				"name": "Código ISO del país",
+				"type": "String"
+			},
+			{
+				"name": "Nombre del país",
+				"type": "String"
+			},
+			{
+				"name": "Recuperado",
+				"type": "String"
+			},
+			{
+				"name": "Fecha de inicio de síntomas",
+				"type": "String"
+			},
+			{
+				"name": "Fecha de muerte",
+				"type": "String"
+			},
+			{
+				"name": "Fecha de diagnóstico",
+				"type": "String"
+			},
+			{
+				"name": "Fecha de recuperación",
+				"type": "String"
+			},
+			{
+				"name": "Tipo de recuperación",
+				"type": "String"
+			},
+			{
+				"name": "Pertenencia étnica",
+				"type": "String"
+			},
+			{
+				"name": "Nombre del grupo étnico",
+				"type": "String"
+			}
+		]
+	}
+}
