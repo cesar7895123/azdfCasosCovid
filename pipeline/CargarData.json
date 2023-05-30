@@ -28,7 +28,13 @@
 					},
 					"dataset": {
 						"referenceName": "dsArchivoOrigen",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"NombreArchivo": {
+								"value": "@pipeline().parameters.NombreArchivo",
+								"type": "Expression"
+							}
+						}
 					},
 					"firstRowOnly": false
 				}
@@ -72,14 +78,14 @@
 											"value": "@item().Prop_3",
 											"type": "Expression"
 										},
-										"type": "Int32"
+										"type": "String"
 									},
 									"Código_DIVIPOLA_municipio": {
 										"value": {
 											"value": "@item().Prop_5",
 											"type": "Expression"
 										},
-										"type": "Int32"
+										"type": "String"
 									},
 									"Código_ISO_del_país": {
 										"value": {
@@ -149,7 +155,7 @@
 											"value": "@item().Prop_1",
 											"type": "Expression"
 										},
-										"type": "Int32"
+										"type": "String"
 									},
 									"Nombre_del_grupo_étnico": {
 										"value": {
@@ -227,6 +233,49 @@
 											"type": "Expression"
 										},
 										"type": "Int32"
+									}
+								}
+							},
+							"linkedServiceName": {
+								"referenceName": "AzSqlCasosCovid",
+								"type": "LinkedServiceReference"
+							}
+						},
+						{
+							"name": "ErrorEjecucion",
+							"type": "SqlServerStoredProcedure",
+							"dependsOn": [
+								{
+									"activity": "IngestCargaData",
+									"dependencyConditions": [
+										"Failed"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"storedProcedureName": "[dbo].[InsertErrorExecution]",
+								"storedProcedureParameters": {
+									"detalle_error": {
+										"value": {
+											"value": "@activity('IngestCargaData').Error.message",
+											"type": "Expression"
+										},
+										"type": "String"
+									},
+									"pipelineName": {
+										"value": {
+											"value": "@pipeline().Pipeline",
+											"type": "Expression"
+										},
+										"type": "String"
 									}
 								}
 							},
