@@ -28,13 +28,7 @@
 					},
 					"dataset": {
 						"referenceName": "dsArchivoOrigen",
-						"type": "DatasetReference",
-						"parameters": {
-							"NombreArchivo": {
-								"value": "@pipeline().parameters.NombreArchivo",
-								"type": "Expression"
-							}
-						}
+						"type": "DatasetReference"
 					},
 					"firstRowOnly": false
 				}
@@ -74,98 +68,164 @@
 								"storedProcedureName": "[dbo].[IngestDataOrigen]",
 								"storedProcedureParameters": {
 									"Código_DIVIPOLA_departamento": {
-										"value": "@item().Prop3",
+										"value": {
+											"value": "@item().Prop_3",
+											"type": "Expression"
+										},
 										"type": "Int32"
 									},
 									"Código_DIVIPOLA_municipio": {
-										"value": "@item().Prop5",
+										"value": {
+											"value": "@item().Prop_5",
+											"type": "Expression"
+										},
 										"type": "Int32"
 									},
 									"Código_ISO_del_país": {
-										"value": "@item().Prop13",
+										"value": {
+											"value": "@item().Prop_13",
+											"type": "Expression"
+										},
 										"type": "String"
 									},
 									"Edad": {
-										"value": "@item().Prop7",
+										"value": {
+											"value": "@item().Prop_7",
+											"type": "Expression"
+										},
 										"type": "Int32"
 									},
 									"Estado": {
-										"value": "@item().Prop12",
+										"value": {
+											"value": "@item().Prop_12",
+											"type": "Expression"
+										},
 										"type": "String"
 									},
 									"Fecha_de_diagnóstico": {
-										"value": "@item().Prop18",
+										"value": {
+											"value": "@item().Prop_18",
+											"type": "Expression"
+										},
 										"type": "DateTime"
 									},
 									"Fecha_de_inicio_de_síntomas": {
-										"value": "@item().Prop16",
+										"value": {
+											"value": "@item().Prop_16",
+											"type": "Expression"
+										},
 										"type": "DateTime"
 									},
 									"Fecha_de_muerte": {
-										"value": "@item().Prop17",
+										"value": {
+											"value": "@item().Prop_17",
+											"type": "Expression"
+										},
 										"type": "DateTime"
 									},
 									"Fecha_de_notificación": {
-										"value": "@item().Prop2",
+										"value": {
+											"value": "@item().Prop_2",
+											"type": "Expression"
+										},
 										"type": "DateTime"
 									},
 									"Fecha_de_recuperación": {
-										"value": "@item().Prop19",
+										"value": {
+											"value": "@item().Prop_19",
+											"type": "Expression"
+										},
 										"type": "DateTime"
 									},
 									"fecha_reporte_web": {
 										"value": {
-											"value": "@item().Prop0",
+											"value": "@item().Prop_0",
 											"type": "Expression"
 										},
 										"type": "DateTime"
 									},
 									"ID_de_caso": {
-										"value": "@item().Prop1",
+										"value": {
+											"value": "@item().Prop_1",
+											"type": "Expression"
+										},
 										"type": "Int32"
 									},
 									"Nombre_del_grupo_étnico": {
-										"value": "@item().Prop22",
+										"value": {
+											"value": "@item().Prop_22",
+											"type": "Expression"
+										},
 										"type": "String"
 									},
 									"Nombre_del_país": {
-										"value": "@item().Prop14",
+										"value": {
+											"value": "@item().Prop_14",
+											"type": "Expression"
+										},
 										"type": "String"
 									},
 									"Nombre_departamento": {
-										"value": "@item().Prop4",
+										"value": {
+											"value": "@item().Prop_4",
+											"type": "Expression"
+										},
 										"type": "String"
 									},
 									"Nombre_municipio": {
-										"value": "@item().Prop6",
+										"value": {
+											"value": "@item().Prop_6",
+											"type": "Expression"
+										},
 										"type": "String"
 									},
 									"Pertenencia_étnica": {
-										"value": "@item().Prop21",
+										"value": {
+											"value": "@item().Prop_21",
+											"type": "Expression"
+										},
 										"type": "Int32"
 									},
 									"Recuperado": {
-										"value": "@item().Prop15",
+										"value": {
+											"value": "@item().Prop_15",
+											"type": "Expression"
+										},
 										"type": "String"
 									},
 									"Sexo": {
-										"value": "@item().Prop9",
+										"value": {
+											"value": "@item().Prop_9",
+											"type": "Expression"
+										},
 										"type": "String"
 									},
 									"Tipo_de_contagio": {
-										"value": "@item().Prop10",
+										"value": {
+											"value": "@item().Prop_10",
+											"type": "Expression"
+										},
 										"type": "String"
 									},
 									"Tipo_de_recuperación": {
-										"value": "@item().Prop20",
+										"value": {
+											"value": "@item().Prop_20",
+											"type": "Expression"
+										},
 										"type": "String"
 									},
 									"Ubicación_del_caso": {
-										"value": "@item().Prop11",
+										"value": {
+											"value": "@item().Prop_11",
+											"type": "Expression"
+										},
 										"type": "String"
 									},
 									"Unidad_de_medida_de_edad": {
-										"value": "@item().Prop8",
+										"value": {
+											"value": "@item().Prop_8",
+											"type": "Expression"
+										},
 										"type": "Int32"
 									}
 								}
