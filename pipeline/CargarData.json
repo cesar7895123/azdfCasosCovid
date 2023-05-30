@@ -19,7 +19,7 @@
 						"type": "DelimitedTextSource",
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
-							"recursive": true,
+							"recursive": false,
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
@@ -27,7 +27,7 @@
 						}
 					},
 					"dataset": {
-						"referenceName": "ArchivoOrigen",
+						"referenceName": "dsArchivoOrigen",
 						"type": "DatasetReference",
 						"parameters": {
 							"NombreArchivo": {
@@ -37,6 +37,145 @@
 						}
 					},
 					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "IteracionInsert",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "ConsultaRegistros",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('ConsultaRegistros').output.value",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "IngestCargaData",
+							"type": "SqlServerStoredProcedure",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"storedProcedureName": "[dbo].[IngestDataOrigen]",
+								"storedProcedureParameters": {
+									"Código_DIVIPOLA_departamento": {
+										"value": "@item().Prop3",
+										"type": "Int32"
+									},
+									"Código_DIVIPOLA_municipio": {
+										"value": "@item().Prop5",
+										"type": "Int32"
+									},
+									"Código_ISO_del_país": {
+										"value": "@item().Prop13",
+										"type": "String"
+									},
+									"Edad": {
+										"value": "@item().Prop7",
+										"type": "Int32"
+									},
+									"Estado": {
+										"value": "@item().Prop12",
+										"type": "String"
+									},
+									"Fecha_de_diagnóstico": {
+										"value": "@item().Prop18",
+										"type": "DateTime"
+									},
+									"Fecha_de_inicio_de_síntomas": {
+										"value": "@item().Prop16",
+										"type": "DateTime"
+									},
+									"Fecha_de_muerte": {
+										"value": "@item().Prop17",
+										"type": "DateTime"
+									},
+									"Fecha_de_notificación": {
+										"value": "@item().Prop2",
+										"type": "DateTime"
+									},
+									"Fecha_de_recuperación": {
+										"value": "@item().Prop19",
+										"type": "DateTime"
+									},
+									"fecha_reporte_web": {
+										"value": {
+											"value": "@item().Prop0",
+											"type": "Expression"
+										},
+										"type": "DateTime"
+									},
+									"ID_de_caso": {
+										"value": "@item().Prop1",
+										"type": "Int32"
+									},
+									"Nombre_del_grupo_étnico": {
+										"value": "@item().Prop22",
+										"type": "String"
+									},
+									"Nombre_del_país": {
+										"value": "@item().Prop14",
+										"type": "String"
+									},
+									"Nombre_departamento": {
+										"value": "@item().Prop4",
+										"type": "String"
+									},
+									"Nombre_municipio": {
+										"value": "@item().Prop6",
+										"type": "String"
+									},
+									"Pertenencia_étnica": {
+										"value": "@item().Prop21",
+										"type": "Int32"
+									},
+									"Recuperado": {
+										"value": "@item().Prop15",
+										"type": "String"
+									},
+									"Sexo": {
+										"value": "@item().Prop9",
+										"type": "String"
+									},
+									"Tipo_de_contagio": {
+										"value": "@item().Prop10",
+										"type": "String"
+									},
+									"Tipo_de_recuperación": {
+										"value": "@item().Prop20",
+										"type": "String"
+									},
+									"Ubicación_del_caso": {
+										"value": "@item().Prop11",
+										"type": "String"
+									},
+									"Unidad_de_medida_de_edad": {
+										"value": "@item().Prop8",
+										"type": "Int32"
+									}
+								}
+							},
+							"linkedServiceName": {
+								"referenceName": "AzSqlCasosCovid",
+								"type": "LinkedServiceReference"
+							}
+						}
+					]
 				}
 			}
 		],
